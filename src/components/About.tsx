@@ -1,8 +1,10 @@
 
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const About: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,12 +28,25 @@ const About: React.FC = () => {
     };
   }, []);
 
+  const aboutText = {
+    fr: "Je suis un étudiant passionné en Systèmes et Réseaux à l'OFPPT au Maroc. Mon parcours est marqué par des projets pratiques en sécurité réseau, pare-feux (F5, FortiGate, pfSense, OPNsense), simulation d'architectures complexes, surveillance IT (Zabbix, Grafana), et conteneurisation avec Docker. Je me spécialise dans la virtualisation, l'automatisation et la gestion d'infrastructure, et je cherche à bâtir une carrière solide dans l'ingénierie des réseaux.",
+    en: "I'm a passionate Systems & Networks student at OFPPT Morocco. My background includes hands-on projects in firewall deployment (F5, FortiGate, pfSense, OPNsense), complex network architecture design, IT monitoring (Zabbix, Grafana), and Docker-based containerization. I focus on virtualization, automation, and infrastructure management, and I'm working toward a strong career in network engineering."
+  };
+
+  const aboutHeading = language === 'fr' ? "À propos de <span class='neon-text'>Moi</span>" : "About <span class='neon-text'>Me</span>";
+  
+  // Tags for skills
+  const tags = {
+    fr: ["Sécurité Réseau", "Administration Système", "Automatisation", "Infrastructure IT"],
+    en: ["Network Security", "System Administration", "Automation", "IT Infrastructure"]
+  };
+
   return (
     <section id="about" className="py-20 relative">
       <div className="absolute w-64 h-64 rounded-full bg-cyber-purple/5 filter blur-3xl top-1/4 -right-32" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">About <span className="neon-text">Me</span></h2>
+        <h2 className="section-heading" dangerouslySetInnerHTML={{ __html: aboutHeading }}></h2>
         
         <div 
           ref={aboutRef}
@@ -47,24 +62,18 @@ const About: React.FC = () => {
             
             <div className="md:w-2/3">
               <p className="mb-4 text-gray-300">
-                I'm a student at <span className="neon-text font-medium">OFPPT Morocco</span>, passionate about IT security, 
-                networks, and automation. Currently in training to become a Systems & Network Technician, I'm developing 
-                skills in network architecture, system administration, and cybersecurity.
-              </p>
-              <p className="mb-4 text-gray-300">
-                My technical journey is driven by curiosity and the desire to understand how complex systems communicate 
-                and function securely. I enjoy working on practical projects that enhance network security and efficiency.
-              </p>
-              <p className="text-gray-300">
-                When I'm not configuring networks or optimizing systems, I'm experimenting with new technologies or 
-                collaborating with peers on interesting technical challenges.
+                {aboutText[language]}
               </p>
               
               <div className="mt-6 flex flex-wrap gap-3">
-                <span className="px-3 py-1 bg-cyber-blue/20 text-cyber-blue rounded-md text-sm">Network Security</span>
-                <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple rounded-md text-sm">System Administration</span>
-                <span className="px-3 py-1 bg-cyber-blue/20 text-cyber-blue rounded-md text-sm">Automation</span>
-                <span className="px-3 py-1 bg-cyber-purple/20 text-cyber-purple rounded-md text-sm">IT Infrastructure</span>
+                {tags[language].map((tag, index) => (
+                  <span 
+                    key={index} 
+                    className={`px-3 py-1 ${index % 2 === 0 ? 'bg-cyber-blue/20 text-cyber-blue' : 'bg-cyber-purple/20 text-cyber-purple'} rounded-md text-sm`}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

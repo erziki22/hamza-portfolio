@@ -1,9 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import ContactLinks from './ContactLinks';
+import { useLanguage } from '../contexts/LanguageContext';
+import { Server } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,26 +26,41 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="text-xl font-bold neon-text font-mono">
-          <span className="text-white">&lt;</span>
-          Hamza
-          <span className="text-white">/&gt;</span>
+        <a href="#" className="text-xl font-bold neon-text font-mono flex items-center gap-2">
+          <Server className="w-6 h-6" />
+          <span>
+            <span className="text-white">&lt;</span>
+            Hamza
+            <span className="text-white">/&gt;</span>
+          </span>
         </a>
 
         <nav className="hidden md:flex space-x-8 items-center">
           <a href="#about" className="nav-link text-gray-300 hover:text-cyber-blue transition-colors">
-            About
+            {language === 'fr' ? 'À propos' : 'About'}
           </a>
           <a href="#projects" className="nav-link text-gray-300 hover:text-cyber-blue transition-colors">
-            Projects
+            {language === 'fr' ? 'Projets' : 'Projects'}
           </a>
           <a href="#skills" className="nav-link text-gray-300 hover:text-cyber-blue transition-colors">
-            Skills
+            {language === 'fr' ? 'Compétences' : 'Skills'}
           </a>
+          <button 
+            onClick={toggleLanguage} 
+            className="text-gray-300 hover:text-cyber-blue px-3 py-1 border border-gray-700 rounded-md hover:border-cyber-blue transition-colors"
+          >
+            {language === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN'}
+          </button>
           <ContactLinks />
         </nav>
         
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <button 
+            onClick={toggleLanguage} 
+            className="text-gray-300 hover:text-cyber-blue px-2 py-1 border border-gray-700 rounded-md hover:border-cyber-blue transition-colors mr-2"
+          >
+            {language === 'fr' ? '🇫🇷' : '🇬🇧'}
+          </button>
           <ContactLinks />
         </div>
       </div>

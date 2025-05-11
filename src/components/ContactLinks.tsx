@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ContactLinksProps {
@@ -17,21 +17,21 @@ const ContactLinks: React.FC<ContactLinksProps> = ({
   const contacts = [
     { 
       icon: Mail, 
-      href: 'mailto:contact@example.com', 
+      href: 'mailto:hamzaerziki@outlook.com', 
       label: 'Email',
       ariaLabel: 'Send an email' 
     },
     { 
-      icon: Github, 
-      href: 'https://github.com/yourusername', 
-      label: 'GitHub',
-      ariaLabel: 'View GitHub profile' 
-    },
-    { 
       icon: Linkedin, 
-      href: 'https://linkedin.com/in/yourusername', 
+      href: 'https://www.linkedin.com/in/hamza-erziki/', 
       label: 'LinkedIn',
       ariaLabel: 'View LinkedIn profile' 
+    },
+    { 
+      icon: Phone, 
+      href: 'tel:0624618601', 
+      label: 'Phone',
+      ariaLabel: 'Call me' 
     }
   ];
 
@@ -44,8 +44,8 @@ const ContactLinks: React.FC<ContactLinksProps> = ({
         <a 
           key={index}
           href={contact.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={contact.icon === Linkedin ? "_blank" : undefined}
+          rel={contact.icon === Linkedin ? "noopener noreferrer" : undefined}
           aria-label={contact.ariaLabel}
           className="group flex items-center gap-2 text-gray-300 hover:text-cyber-blue transition-colors"
         >
