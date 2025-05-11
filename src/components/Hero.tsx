@@ -1,13 +1,17 @@
 
 import React, { useEffect, useRef } from 'react';
 import TypewriterText from './TypewriterText';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (heroRef.current) {
+      if (heroRef.current && !isMobile) {
         const scrollY = window.scrollY;
         heroRef.current.style.transform = `translateY(${scrollY * 0.4}px)`;
         heroRef.current.style.opacity = `${1 - scrollY * 0.002}`;
@@ -16,7 +20,11 @@ const Hero: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
+
+  const heroText = language === 'fr' 
+    ? "Technicien Systèmes & Réseaux en formation" 
+    : "Systems & Network Technician in training";
 
   return (
     <section className="relative h-screen flex items-center justify-center bg-cyber-grid overflow-hidden">
@@ -37,30 +45,30 @@ const Hero: React.FC = () => {
       
       <div ref={heroRef} className="container mx-auto text-center z-10 px-4">
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 font-montserrat">
-          <span className="block mb-4">Hi, I'm</span>
+          <span className="block mb-4">{language === 'fr' ? 'Bonjour, je suis' : 'Hi, I\'m'}</span>
           <span className="neon-text">Hamza</span>
         </h1>
         
         <div className="text-xl md:text-2xl lg:text-3xl mb-8 font-medium font-montserrat">
           <TypewriterText 
-            text="Systems & Network Technician in training" 
+            text={heroText}
             className="neon-purple"
           />
         </div>
         
-        <div className="flex justify-center gap-6 mt-12">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-12">
           <a 
             href="#projects" 
-            className="px-8 py-3 rounded-md bg-cyber-blue text-white font-medium hover:bg-cyber-blue/90 hover:scale-105 transition-all shadow-lg shadow-cyber-blue/20"
+            className="px-6 py-3 rounded-md bg-cyber-blue text-white font-medium hover:bg-cyber-blue/90 hover:scale-105 transition-all shadow-lg shadow-cyber-blue/20 text-center"
           >
-            View Projects
+            {language === 'fr' ? 'Voir Projets' : 'View Projects'}
           </a>
           
           <a 
             href="#about" 
-            className="px-8 py-3 rounded-md bg-transparent text-cyber-blue font-medium border border-cyber-blue hover:bg-cyber-blue/10 transition-all shadow-lg shadow-cyber-blue/10 hover:shadow-cyber-blue/20"
+            className="px-6 py-3 rounded-md bg-transparent text-cyber-blue font-medium border border-cyber-blue hover:bg-cyber-blue/10 transition-all shadow-lg shadow-cyber-blue/10 hover:shadow-cyber-blue/20 text-center"
           >
-            About Me
+            {language === 'fr' ? 'À Propos' : 'About Me'}
           </a>
         </div>
       </div>
@@ -69,9 +77,9 @@ const Hero: React.FC = () => {
         <a 
           href="#about"
           className="flex flex-col items-center text-sm text-gray-400 hover:text-cyber-blue transition-colors"
-          aria-label="Scroll to About section"
+          aria-label={language === 'fr' ? 'Défiler vers la section À Propos' : 'Scroll to About section'}
         >
-          <span>Scroll Down</span>
+          <span>{language === 'fr' ? 'Défiler' : 'Scroll Down'}</span>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             className="h-5 w-5 animate-bounce mt-1" 

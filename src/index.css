@@ -44,6 +44,7 @@
   
   body {
     @apply bg-cyber-dark text-foreground antialiased overflow-x-hidden font-inter;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
@@ -82,5 +83,31 @@
   .section-heading::after {
     content: '';
     @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-cyber-blue/20 via-cyber-blue to-cyber-blue/20;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+    
+    .section-heading {
+      @apply text-2xl pb-3;
+    }
+    
+    .section-heading::after {
+      @apply w-16;
+    }
+  }
+  
+  /* Better touch targets for mobile */
+  @media (max-width: 768px) {
+    button, a {
+      @apply min-h-9 min-w-9;
+    }
+    
+    input, select, textarea {
+      @apply text-base;
+    }
   }
 }
