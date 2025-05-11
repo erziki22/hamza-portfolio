@@ -1,12 +1,21 @@
 
 import React from 'react';
 import SkillIcon from './SkillIcon';
-import { Linux, Windows, Database, Network, Terminal, Server, Code, Laptop } from 'lucide-react';
+import { 
+  Terminal, 
+  Database, 
+  Network, 
+  Server, 
+  Code, 
+  Laptop,
+  MonitorPlay,
+  GanttChart
+} from 'lucide-react';
 
 const Skills: React.FC = () => {
   const skills = [
-    { name: 'Linux', icon: <Linux className="w-8 h-8 text-cyber-blue" />, level: 85, delay: 0 },
-    { name: 'Windows Server', icon: <Windows className="w-8 h-8 text-cyber-blue" />, level: 80, delay: 100 },
+    { name: 'Linux', icon: <Terminal className="w-8 h-8 text-cyber-blue" />, level: 85, delay: 0 },
+    { name: 'Windows Server', icon: <MonitorPlay className="w-8 h-8 text-cyber-blue" />, level: 80, delay: 100 },
     { name: 'VMware', icon: <Server className="w-8 h-8 text-cyber-blue" />, level: 75, delay: 200 },
     { name: 'Networking', icon: <Network className="w-8 h-8 text-cyber-blue" />, level: 90, delay: 300 },
     { name: 'Bash Scripting', icon: <Terminal className="w-8 h-8 text-cyber-blue" />, level: 70, delay: 400 },
