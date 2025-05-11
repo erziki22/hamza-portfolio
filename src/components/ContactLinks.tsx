@@ -2,13 +2,12 @@
 import React from 'react';
 import { Linkedin, Mail, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { 
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger 
-} from '@/components/ui/tooltip';
 import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface ContactLinksProps {
   className?: string;
@@ -59,25 +58,30 @@ const ContactLinks: React.FC<ContactLinksProps> = ({
         </a>
       ))}
       
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
+      <Dialog>
+        <DialogTrigger asChild>
+          <button
+            aria-label={language === 'fr' ? 'Voir le numéro de téléphone' : 'View phone number'}
+            className="group flex items-center gap-2 text-gray-300 hover:text-cyber-blue transition-colors"
+          >
+            <Phone size={iconSize} className="transition-transform group-hover:scale-110" />
+            {vertical && <span className="text-sm">{language === 'fr' ? 'Téléphone' : 'Phone'}</span>}
+          </button>
+        </DialogTrigger>
+        <DialogContent className="bg-cyber-dark border border-cyber-blue/30 text-white w-[90%] max-w-sm">
+          <div className="flex flex-col items-center justify-center py-6">
+            <div className="text-4xl mb-4 text-cyber-blue">📞</div>
+            <h2 className="text-xl font-bold mb-4">{phoneLabel}</h2>
             <a 
               href="tel:0624618601"
-              aria-label={language === 'fr' ? 'Appeler' : 'Call me'}
-              className="group flex items-center gap-2 text-gray-300 hover:text-cyber-blue transition-colors"
+              className="px-6 py-3 bg-cyber-blue text-white rounded-md hover:bg-cyber-blue/80 transition-colors font-medium flex items-center gap-2"
             >
-              <Phone size={iconSize} className="transition-transform group-hover:scale-110" />
-              {vertical && <span className="text-sm">{language === 'fr' ? 'Téléphone' : 'Phone'}</span>}
+              <Phone size={18} />
+              {language === 'fr' ? 'Appeler maintenant' : 'Call now'}
             </a>
-          </TooltipTrigger>
-          <TooltipContent side="top" className="bg-cyber-dark border border-cyber-blue/30 text-white">
-            <div className="flex items-center gap-2">
-              <span>📞 {phoneLabel}</span>
-            </div>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
