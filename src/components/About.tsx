@@ -11,6 +11,7 @@ const About: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           aboutRef.current?.classList.add('animate-fade-in');
+          aboutRef.current?.classList.remove('opacity-0');
           observer.unobserve(entry.target);
         }
       },
@@ -46,7 +47,7 @@ const About: React.FC = () => {
       <div className="absolute w-64 h-64 rounded-full bg-cyber-purple/5 filter blur-3xl top-1/4 -right-32" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="section-heading" dangerouslySetInnerHTML={{ __html: aboutHeading }}></h2>
+        <h2 className="section-heading font-montserrat" dangerouslySetInnerHTML={{ __html: aboutHeading }}></h2>
         
         <div 
           ref={aboutRef}
@@ -61,7 +62,7 @@ const About: React.FC = () => {
             </div>
             
             <div className="md:w-2/3">
-              <p className="mb-4 text-gray-300">
+              <p className="mb-4 text-gray-300 font-roboto">
                 {aboutText[language]}
               </p>
               
@@ -69,7 +70,7 @@ const About: React.FC = () => {
                 {tags[language].map((tag, index) => (
                   <span 
                     key={index} 
-                    className={`px-3 py-1 ${index % 2 === 0 ? 'bg-cyber-blue/20 text-cyber-blue' : 'bg-cyber-purple/20 text-cyber-purple'} rounded-md text-sm`}
+                    className={`px-3 py-1 ${index % 2 === 0 ? 'bg-cyber-blue/20 text-cyber-blue' : 'bg-cyber-purple/20 text-cyber-purple'} rounded-md text-sm font-roboto`}
                   >
                     {tag}
                   </span>

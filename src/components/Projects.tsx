@@ -67,7 +67,7 @@ const Projects: React.FC = () => {
       <div className="absolute w-72 h-72 rounded-full bg-cyber-blue/5 filter blur-3xl -left-36 top-1/3" aria-hidden="true"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="section-heading">
+        <h2 className="section-heading font-montserrat">
           {language === 'fr' ? 'Mes ' : 'My '}<span className="neon-text">{language === 'fr' ? 'Projets' : 'Projects'}</span>
         </h2>
         

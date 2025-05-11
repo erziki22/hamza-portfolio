@@ -36,12 +36,12 @@ const Hero: React.FC = () => {
       ></div>
       
       <div ref={heroRef} className="container mx-auto text-center z-10 px-4">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 font-montserrat">
           <span className="block mb-4">Hi, I'm</span>
           <span className="neon-text">Hamza</span>
         </h1>
         
-        <div className="text-xl md:text-2xl lg:text-3xl mb-8 font-light">
+        <div className="text-xl md:text-2xl lg:text-3xl mb-8 font-medium font-montserrat">
           <TypewriterText 
             text="Systems & Network Technician in training" 
             className="neon-purple"

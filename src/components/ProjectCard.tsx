@@ -55,12 +55,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       )}
     >
       <div className="mb-4 text-cyber-blue">{icon}</div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-400 mb-4 text-sm">{description}</p>
+      <h3 className="text-xl font-bold mb-2 font-montserrat">{title}</h3>
+      <p className="text-gray-400 mb-4 text-sm font-roboto">{description}</p>
       
       <div className="flex flex-wrap gap-2 mt-auto">
         {technologies.map((tech, index) => (
-          <span key={index} className="text-xs px-2 py-1 bg-cyber-blue/10 text-cyber-blue rounded-md">
+          <span key={index} className="text-xs px-2 py-1 bg-cyber-blue/10 text-cyber-blue rounded-md font-roboto">
             {tech}
           </span>
         ))}
