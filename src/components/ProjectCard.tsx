@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ProjectCardProps {
   title: string;
@@ -20,6 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   delay = 0,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,6 +30,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           setTimeout(() => {
             cardRef.current?.classList.add('animate-fade-in');
             cardRef.current?.classList.remove('opacity-0');
+            
+            // Add mobile-specific animation class
+            if (isMobile) {
+              cardRef.current?.classList.add('mobile-scroll-animation');
+            }
           }, delay);
           observer.unobserve(entry.target);
         }
@@ -44,13 +51,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         observer.unobserve(cardRef.current);
       }
     };
-  }, [delay]);
+  }, [delay, isMobile]);
 
   return (
     <div
       ref={cardRef}
       className={cn(
         "glass-card p-5 sm:p-6 opacity-0 transform transition-all duration-300 hover:-translate-y-2 h-full",
+        isMobile && "hover:shadow-lg hover:shadow-cyber-blue/30",
         className
       )}
     >

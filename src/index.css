@@ -85,6 +85,40 @@
     @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-cyber-blue/20 via-cyber-blue to-cyber-blue/20;
   }
   
+  /* Mobile scroll animations */
+  @media (max-width: 768px) {
+    .mobile-scroll-animation {
+      animation: mobile-slide-in 0.5s ease-out forwards;
+    }
+    
+    @keyframes mobile-slide-in {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Enable parallax effect on mobile */
+    .parallax-scroll {
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* Enhanced mobile touch feedback */
+    a:active, button:active {
+      transform: scale(0.97);
+    }
+    
+    /* Smoother scrolling on mobile */
+    .smooth-scroll {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  
   /* Mobile optimizations */
   @media (max-width: 640px) {
     .container {

@@ -110,6 +110,25 @@ export default {
 				},
 				'blink': {
 					'50%': { borderColor: 'transparent' },
+				},
+				'bounceIn': {
+					'0%': { transform: 'scale(0.3)', opacity: '0' },
+					'50%': { transform: 'scale(1.05)' },
+					'70%': { transform: 'scale(0.9)' },
+					'100%': { transform: 'scale(1)', opacity: '1' },
+				},
+				'shake': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+					'20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
+				},
+				'spin': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
 				}
 			},
 			animation: {
@@ -119,7 +138,11 @@ export default {
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
 				'pulse-glow': 'pulse-glow 2s infinite',
 				'typing': 'typing 3.5s steps(40, end)',
-				'blink': 'blink 0.7s step-end infinite'
+				'blink': 'blink 0.7s step-end infinite',
+				'bounce-in': 'bounceIn 0.5s ease-out forwards',
+				'shake': 'shake 0.5s ease-in-out',
+				'spin': 'spin 1s ease-in-out',
+				'float': 'float 3s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'cyber-grid': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 0h1v1H0zM1 1h1v1H1z' fill='rgba(30, 174, 219, 0.05)' fill-opacity='0.05'/%3E%3C/svg%3E\")",
