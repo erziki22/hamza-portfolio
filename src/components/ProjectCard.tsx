@@ -50,11 +50,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div
       ref={cardRef}
       className={cn(
-        "glass-card p-5 sm:p-6 opacity-0 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-cyber-blue/30 h-full",
+        "glass-card p-5 sm:p-6 opacity-0 transform transition-all duration-300 hover:-translate-y-2 h-full",
         className
       )}
     >
-      <div className="mb-4 text-cyber-blue animate-pulse-glow">{icon}</div>
+      <div className="mb-4 text-cyber-blue">{icon}</div>
       <h3 className="text-lg sm:text-xl font-bold mb-2 font-montserrat">{title}</h3>
       <p className="text-gray-400 mb-4 text-sm font-roboto">{description}</p>
       
@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {technologies.map((tech, index) => (
           <span 
             key={index} 
-            className="text-xs px-2 py-1 bg-cyber-blue/10 text-cyber-blue rounded-md font-roboto hover:bg-cyber-blue/20 transition-colors duration-300 transform hover:scale-105 cursor-default"
+            className="text-xs px-2 py-1 bg-cyber-blue/10 text-cyber-blue rounded-md font-roboto"
           >
             {tech}
           </span>

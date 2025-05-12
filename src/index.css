@@ -85,25 +85,6 @@
     @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-cyber-blue/20 via-cyber-blue to-cyber-blue/20;
   }
   
-  /* Animation for dialog entry */
-  .animate-enter {
-    animation: enter 0.5s ease-out forwards;
-  }
-  
-  @keyframes enter {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, -40%) scale(0.9);
-    }
-    60% {
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-  
   /* Mobile optimizations */
   @media (max-width: 640px) {
     .container {
@@ -128,15 +109,5 @@
     input, select, textarea {
       @apply text-base;
     }
-  }
-  
-  /* Cyberpunk glow effect for buttons and interactive elements */
-  .cyber-glow {
-    filter: drop-shadow(0 0 5px rgba(30, 174, 219, 0.5));
-    transition: filter 0.3s ease;
-  }
-  
-  .cyber-glow:hover {
-    filter: drop-shadow(0 0 10px rgba(30, 174, 219, 0.8));
   }
 }
