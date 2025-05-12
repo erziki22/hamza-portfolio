@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import { Network, Server, Terminal, Shield, Activity } from 'lucide-react';
@@ -22,7 +21,7 @@ const Projects: React.FC = () => {
         icon: <Network className="w-10 h-10" />,
       },
       {
-        title: 'Surveillance et Journalisation IT',
+        title: 'Surveillance IT',
         description: 'Déploiement d\'outils de surveillance comme Grafana, Prometheus et Zabbix pour le monitoring en temps réel et l\'analyse des performances de l\'infrastructure.',
         technologies: ['Grafana', 'Prometheus', 'Zabbix', 'Monitoring'],
         icon: <Activity className="w-10 h-10" />,
@@ -48,7 +47,7 @@ const Projects: React.FC = () => {
         icon: <Network className="w-10 h-10" />,
       },
       {
-        title: 'IT Infrastructure Monitoring',
+        title: 'IT Monitoring',
         description: 'Deployed monitoring tools like Grafana, Prometheus, and Zabbix for real-time infrastructure monitoring and performance analysis.',
         technologies: ['Grafana', 'Prometheus', 'Zabbix', 'Monitoring'],
         icon: <Activity className="w-10 h-10" />,

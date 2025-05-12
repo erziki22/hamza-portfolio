@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import TypewriterText from './TypewriterText';
 import { useLanguage } from '@/contexts/LanguageContext';
