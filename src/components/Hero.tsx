@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import TypewriterText from './TypewriterText';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -33,19 +34,19 @@ const Hero: React.FC = () => {
       ></div>
       
       <div 
-        className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full bg-cyber-blue/10 filter blur-3xl -top-20 -right-20"
+        className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full bg-cyber-blue/10 filter blur-3xl -top-20 -right-20 animate-pulse-glow"
         aria-hidden="true"
       ></div>
       
       <div 
-        className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full bg-cyber-purple/10 filter blur-3xl -bottom-20 -left-20"
+        className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full bg-cyber-purple/10 filter blur-3xl -bottom-20 -left-20 animate-pulse-glow"
         aria-hidden="true"
       ></div>
       
       <div ref={heroRef} className="container mx-auto text-center z-10 px-4">
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 font-montserrat">
-          <span className="block mb-4">{language === 'fr' ? 'Bonjour, je suis' : 'Hi, I\'m'}</span>
-          <span className="neon-text">Hamza</span>
+          <span className="block mb-4 animate-fade-in">{language === 'fr' ? 'Bonjour, je suis' : 'Hi, I\'m'}</span>
+          <span className="neon-text animate-[pulse_2s_ease-in-out_infinite]">Hamza</span>
         </h1>
         
         <div className="text-xl md:text-2xl lg:text-3xl mb-8 font-medium font-montserrat">
@@ -58,21 +59,23 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-12">
           <a 
             href="#projects" 
-            className="px-6 py-3 rounded-md bg-cyber-blue text-white font-medium hover:bg-cyber-blue/90 hover:scale-105 transition-all shadow-lg shadow-cyber-blue/20 text-center"
+            className="px-6 py-3 rounded-md bg-cyber-blue text-white font-medium hover:bg-cyber-blue/90 hover:scale-105 transition-all shadow-lg shadow-cyber-blue/20 text-center animate-fade-in"
+            style={{ animationDelay: '0.6s' }}
           >
             {language === 'fr' ? 'Voir Projets' : 'View Projects'}
           </a>
           
           <a 
             href="#about" 
-            className="px-6 py-3 rounded-md bg-transparent text-cyber-blue font-medium border border-cyber-blue hover:bg-cyber-blue/10 transition-all shadow-lg shadow-cyber-blue/10 hover:shadow-cyber-blue/20 text-center"
+            className="px-6 py-3 rounded-md bg-transparent text-cyber-blue font-medium border border-cyber-blue hover:bg-cyber-blue/10 transition-all shadow-lg shadow-cyber-blue/10 hover:shadow-cyber-blue/20 text-center animate-fade-in"
+            style={{ animationDelay: '0.8s' }}
           >
             {language === 'fr' ? 'À Propos' : 'About Me'}
           </a>
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <a 
           href="#about"
           className="flex flex-col items-center text-sm text-gray-400 hover:text-cyber-blue transition-colors"
@@ -81,7 +84,7 @@ const Hero: React.FC = () => {
           <span>{language === 'fr' ? 'Défiler' : 'Scroll Down'}</span>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className="h-5 w-5 animate-bounce mt-1" 
+            className="h-5 w-5 mt-1" 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor"
